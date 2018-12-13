@@ -4,8 +4,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -16,8 +21,6 @@ public class Shop {
 
     Shop(Stage primaryStage){
         this.stage=primaryStage;
-    }
-    public void loadall(){
     }
 
 
@@ -45,24 +48,37 @@ public class Shop {
 
 
     public void showShop(RadioButton radio){
+        String l = null;
         if (radio.getText()=="Female"){
             this.buyer=new Female();
+            l="f";
         }
         else if (radio.getText()=="Male"){
             this.buyer=new Male();
+            l="m";
         }
         else if (radio.getText()=="Kid"){
             this.buyer=new Kid();
+            l="k";
         }
         Rectangle rectangle=this.buyer.getBody();
-        VBox root=new VBox();
-        root.setFillWidth(true);
-        root.getChildren().add(rectangle);
-        this.scene=new Scene(root, 1000, 1000, Color.RED);
+        HBox root=new HBox();
+        Rectangle polosa=new Rectangle();
+        polosa.setWidth(50);
+        polosa.setHeight(710);
+        polosa.setFill(Color.BROWN);
+        root.getChildren().addAll(rectangle,polosa/*,this.buyer.closet(l)*/);
+        this.scene=new Scene(root, 1000, 710);
+        this.scene.setUserAgentStylesheet("sample/css1.css");
         stage.setTitle("Choose your look)))");
         this.stage.setScene(this.scene);
         this.stage.show();
     }
+
+
+
+
+
 
 
 }

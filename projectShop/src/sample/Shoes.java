@@ -1,10 +1,14 @@
 package sample;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 public class Shoes extends WeiringDecorator {
     Buyer buyer;
 
+    Shoes(){
+
+    }
     @Override
     String getDescription() {
         return null;
@@ -19,4 +23,5 @@ public class Shoes extends WeiringDecorator {
     Rectangle getBody() {
         return null;
     }
+
 }

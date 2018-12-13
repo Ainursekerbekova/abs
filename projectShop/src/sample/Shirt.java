@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 public class Shirt extends WeiringDecorator {
@@ -19,4 +20,5 @@ public class Shirt extends WeiringDecorator {
     Rectangle getBody() {
         return null;
     }
+
 }
