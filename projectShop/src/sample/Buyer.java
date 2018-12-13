@@ -7,5 +7,6 @@ public abstract class Buyer {
     abstract String getDescription();
     abstract int sum();
     abstract Rectangle getBody();
+    PayAbility payAbility;
 
 }
