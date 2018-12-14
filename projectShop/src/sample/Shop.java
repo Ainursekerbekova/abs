@@ -3,14 +3,11 @@ package sample;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -18,6 +15,7 @@ public class Shop {
     private Buyer buyer;
     private Scene scene;
     private Stage stage;
+    private payAbility payable=new payWithCard();
 
     Shop(Stage primaryStage){
         this.stage=primaryStage;
@@ -40,7 +38,7 @@ public class Shop {
         });
         VBox preroot=new VBox();
         preroot.getChildren().addAll(fem,male,kid,submit);
-        this.scene=new Scene(preroot,500,300);
+        this.scene=new Scene(preroot,200,100);
         prestage.setScene(this.scene);
         prestage.show();
     }
@@ -62,19 +60,37 @@ public class Shop {
             l="k";
         }
         Rectangle rectangle=this.buyer.getBody();
+
         HBox root=new HBox();
         Rectangle polosa=new Rectangle();
         polosa.setWidth(50);
         polosa.setHeight(710);
         polosa.setFill(Color.BROWN);
-        root.getChildren().addAll(rectangle,polosa/*,this.buyer.closet(l)*/);
+        Button buy=new Button("Buy");
+        buy.setOnAction(event -> {
+            stage.close();
+            this.performPay();
+        });
+        VBox vBox=new VBox();
+        vBox.getChildren().addAll(this.buyer.closet(l),buy);
+        root.getChildren().addAll(rectangle,polosa,vBox);
         this.scene=new Scene(root, 1000, 710);
         this.scene.setUserAgentStylesheet("sample/css1.css");
         stage.setTitle("Choose your look)))");
         this.stage.setScene(this.scene);
         this.stage.show();
     }
-
+    public void changePayMethod(int type) {
+        if(type == 1)
+            payable = new payWithCard();
+        if(type == 2)
+            payable = new payWithPayPal();
+        if(type == 3)
+            payable = new payWithQiwi();
+    }
+    public void performPay() {
+        payable.pay();
+    }
 
 
 

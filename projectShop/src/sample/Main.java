@@ -9,7 +9,20 @@ public class Main extends Application {
 
         Shop shop=new Shop(primaryStage);
         shop.showpre();
-
+/*
+            VBox box=new VBox();
+            TextField number=new TextField("number");
+            TextField name=new TextField("name");
+            TextField cvc=new TextField();
+            TextField date=new TextField();
+            Button submit=new Button("submit");
+            submit.setOnAction(event1 -> {
+            });
+            box.getChildren().addAll(name,number,date,cvc,submit);
+            Stage buyStage=new Stage();
+            Scene buyScene=new Scene(box,500,500);
+            buyStage.setScene(buyScene);
+            buyStage.show();*/
 
     }
 

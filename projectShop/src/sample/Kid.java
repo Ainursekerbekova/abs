@@ -9,6 +9,7 @@ import javafx.scene.shape.Rectangle;
 public class Kid extends Buyer{
     Rectangle rectangle;
     Kid(){
+        basket=new Basket();
         rectangle=new Rectangle();
         Image img=new Image("sample/Male.jpg");
         rectangle.setFill(new ImagePattern(img));
@@ -38,7 +39,7 @@ public class Kid extends Buyer{
             rectangle.setFill(new ImagePattern(img));
             rectangle.setHeight(100);
             rectangle.setWidth(100);
-            grid.add(rectangle,(i%6),0);
+            grid.add(rectangle,0,i);
 
         }
         return grid;
